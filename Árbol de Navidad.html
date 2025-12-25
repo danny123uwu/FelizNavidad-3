@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Árbol Navideño 3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- AUDIO (MISMO NOMBRE, FUNCIONA CON SERVIDOR LOCAL) -->
+<audio id="bgMusic"
+  src="José Feliciano - Feliz Navidad (Letra).mp3"
+  loop
+  preload="auto">
+</audio>
+
+<div id="overlay">
+  <div id="formulario">
+    <h3>Ingresa tu nombre</h3>
+    <input id="nombre" placeholder="Tu nombre">
+    <button id="entrarBtn" disabled>Entrar</button>
+  </div>
+</div>
+
+<div id="mensaje"></div>
+<div id="footer">Y feliz año nuevo...🎆🙈🎆</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+  const nombreInput = document.getElementById("nombre");
+  const btn = document.getElementById("entrarBtn");
+  const audio = document.getElementById("bgMusic");
+  const overlay = document.getElementById("overlay");
+  const mensaje = document.getElementById("mensaje");
+  const footer = document.getElementById("footer");
+
+  nombreInput.addEventListener("input", () => {
+    btn.disabled = nombreInput.value.trim() === "";
+  });
+
+  function iniciar() {
+    audio.volume = 0.6;
+    audio.currentTime = 0;
+
+    audio.play().then(() => {
+      console.log("Audio reproduciéndose");
+    }).catch(err => {
+      console.error("Error audio:", err);
+    });
+
+    overlay.style.opacity = "0";
+    setTimeout(() => overlay.style.display = "none", 600);
+
+    mensaje.innerHTML = `🎄 Feliz Navidad, ${nombreInput.value}🎄 `;
+    mensaje.style.opacity = "1";
+    footer.style.opacity = "1";
+  }
+
+  btn.addEventListener("click", iniciar);
+  nombreInput.addEventListener("keydown", e => {
+    if (e.key === "Enter" && !btn.disabled) iniciar();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+ body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+      transition: opacity 0.6s;
+    }
+
+    #formulario {
+      background: rgba(20,20,20,0.9);
+      padding: 22px;
+      border-radius: 18px;
+      width: 260px;
+      text-align: center;
+    }
+
+    #nombre {
+      width: 100%;
+      padding: 10px;
+      border-radius: 18px;
+      border: none;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    #entrarBtn {
+      width: 140px;
+      padding: 9px;
+      border-radius: 18px;
+      border: none;
+      font-weight: bold;
+    }
+
+    #entrarBtn:disabled {
+      opacity: 0.4;
+    }
+
+    #mensaje {
+      position: absolute;
+      top: 8%;
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 1.5s;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1.5s;
+    }
